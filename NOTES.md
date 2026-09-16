@@ -2,6 +2,28 @@
 
 Design ideas tried and decisions made, newest first.
 
+## 2026-09-15: published, without git
+
+The site is live at https://pandrewturner.github.io/Out-in-the-Sun/.
+
+The system git is Apple's stub and still refuses every command until the Xcode licence
+is accepted, which needs a password. There is no Homebrew git on this machine either. So
+the first publish went through GitHub's Git Data API instead: a blob per file, one tree,
+one commit, then move refs/heads/main. The Pages workflow saw an ordinary push and built
+from it normally.
+
+One gotcha: the Git Data API returns 409 on a repository with zero commits. Seed one file
+through the Contents API first, which does work on an empty repo, then the tree-based
+path is available.
+
+`scripts/publish.py` wraps this so it is repeatable, with the same exclusion list as
+.gitignore and a hard refusal if the manuscript or anything under private/ ever appears
+in the file list. Delete it once `sudo xcodebuild -license` has been run and real git
+works.
+
+Verified live: all three pages 200, fonts and images served, og:image absolute and
+reachable, and the manuscript path 404s.
+
 ## 2026-09-15: social sharing card
 
 Andrew added `Group Photo.jpg`, a watercolor of the six on the soccer sideline, to be
