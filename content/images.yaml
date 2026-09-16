@@ -41,12 +41,6 @@ couples:
     source: Caleb and Rami Kiss.png
     approved: true
 
-# Full illustrations used on the pages themselves, at their natural shape.
-scenes:
-  - name: scene-sideline
-    source: Group Photo.jpg
-    approved: true
-
 # The social sharing card. A full-width band from the source, cropped to the
 # 1200x630 that Facebook, LinkedIn, Slack, iMessage and X all expect. "focus" is
 # the vertical centre of that band as a fraction of the source height, chosen so

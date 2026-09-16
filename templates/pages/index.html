@@ -3,25 +3,26 @@
 
 {% block content %}
 
-<header class="opening">
-  <div class="wrap opening__in">
-    <div class="opening__words">
-      <h1 class="opening__title">Out in<br>the Sun</h1>
-      <p class="opening__hook">{{ site.hook }}</p>
-      <p class="opening__by">{{ site.author }}</p>
+<header class="head">
+  <div class="wrap">
+    <div class="head__in">
+      <div>
+        <h1 class="head__title">Out in<br>the Sun</h1>
+        <p class="head__by">{{ site.author }}</p>
+      </div>
+      <p class="head__lead">{{ site.hook }}</p>
     </div>
 
-    <figure class="opening__scene">
-      <picture>
-        <source type="image/avif" sizes="(min-width: 62em) 34vw, 86vw"
-                srcset="{{ url('static/img/scene-sideline-448.avif') }} 448w, {{ url('static/img/scene-sideline-896.avif') }} 896w">
-        <source type="image/webp" sizes="(min-width: 62em) 34vw, 86vw"
-                srcset="{{ url('static/img/scene-sideline-448.webp') }} 448w, {{ url('static/img/scene-sideline-896.webp') }} 896w">
-        <img src="{{ url('static/img/scene-sideline-448.png') }}" width="896" height="1195"
-             alt="{{ site.share.alt }}" fetchpriority="high" decoding="async">
-      </picture>
-      <figcaption>The book opens here, on a cool spring evening at an Out Pride Soccer League game.</figcaption>
-    </figure>
+    <ul class="six">
+      {% for person in ordered %}
+      <li>
+        <a href="{{ url('narrators/') }}#{{ person.slug }}">
+          {% with sizes = "(min-width: 44em) 14vw, 28vw" %}{% include "partials/portrait.html" %}{% endwith %}
+          <span class="six__name">{{ person.name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
 </header>
 
@@ -35,29 +36,17 @@
 <section aria-labelledby="couples-heading">
   <h2 class="visually-hidden" id="couples-heading">The three couples</h2>
   {% for couple in couples %}
-  <article class="pairing pairing--{{ loop.index0 % 2 }}" id="{{ couple.slug }}" style="--tone: {{ couple.tint }}">
-    <div class="wrap pairing__in">
-      <picture class="pairing__art">
-        <source type="image/avif" sizes="(min-width: 56em) 42vw, 86vw"
-                srcset="{{ url('static/img/' ~ couple.image ~ '-400.avif') }} 400w, {{ url('static/img/' ~ couple.image ~ '-800.avif') }} 800w">
-        <source type="image/webp" sizes="(min-width: 56em) 42vw, 86vw"
-                srcset="{{ url('static/img/' ~ couple.image ~ '-400.webp') }} 400w, {{ url('static/img/' ~ couple.image ~ '-800.webp') }} 800w">
-        <img src="{{ url('static/img/' ~ couple.image ~ '-400.png') }}" width="800" height="800"
-             alt="{{ couple.alt }}" loading="lazy" decoding="async">
-      </picture>
-
-      <div class="pairing__words">
+  <article class="couple" id="{{ couple.slug }}" style="--tone: {{ couple.tint }}">
+    <div class="wrap couple__in">
+      <div class="couple__faces">
+        {% for person in couple.people %}
+          {% with sizes = "(min-width: 56em) 11.25rem, 30vw" %}{% include "partials/portrait.html" %}{% endwith %}
+        {% endfor %}
+      </div>
+      <div>
         <p class="tag">{{ couple.billing }}</p>
-        <h3 class="pairing__name">{{ couple.name }}</h3>
-        <p class="pairing__body">{{ couple.summary }}</p>
-        <p class="pairing__who">
-          {% for person in couple.people %}
-          <a href="{{ url('narrators/') }}#{{ person.slug }}">
-            {% with sizes = "3.5rem" %}{% include "partials/portrait.html" %}{% endwith %}
-            <span>{{ person.name }}</span>
-          </a>
-          {% endfor %}
-        </p>
+        <h3 class="couple__name">{{ couple.name }}</h3>
+        <p class="couple__body">{{ couple.summary }}</p>
       </div>
     </div>
   </article>

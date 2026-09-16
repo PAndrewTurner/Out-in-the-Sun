@@ -91,7 +91,8 @@ def main() -> int:
         page.on("pageerror", lambda e: errors.append(str(e)))
 
         for path, selector, where in (
-            ("/", ".pairing__who .por", "home, narrator links"),
+            ("/", ".six .por", "home, the six"),
+            ("/", ".couple__faces .por", "home, couple rows"),
             ("/narrators/", ".who .por", "narrators"),
         ):
             page.goto(f"{BASE}{path}", wait_until="networkidle")
@@ -102,15 +103,15 @@ def main() -> int:
             audit.check(worst >= 1.0, f"{where}: never upscaled, tightest {worst}x the source")
 
         page.goto(f"{BASE}/", wait_until="networkidle")
-        art = page.evaluate("""() => Array.from(document.querySelectorAll('.pairing__art img')).map(i => ({
-          rendered: Math.round(i.getBoundingClientRect().width), natural: i.naturalWidth }))""")
-        worst = min(a["natural"] / a["rendered"] for a in art)
-        audit.check(worst >= 1.0, f"couple art never upscaled, tightest {worst:.2f}x ({len(art)} images)")
-
-        scene = page.evaluate("""() => { const i = document.querySelector('.opening__scene img');
-          return { rendered: Math.round(i.getBoundingClientRect().width), natural: i.naturalWidth }; }""")
-        audit.check(scene["natural"] / scene["rendered"] >= 1.0,
-                    f"opening scene never upscaled ({scene['natural']}/{scene['rendered']})")
+        laps = page.evaluate("""() => {
+          const bad = [];
+          document.querySelectorAll('.couple__faces').forEach(f => {
+            const [a, b] = Array.from(f.querySelectorAll('.por')).map(p => p.getBoundingClientRect());
+            if (b.left < a.right - 1) bad.push(Math.round(a.right - b.left) + 'px');
+          });
+          return bad;
+        }""")
+        audit.check(not laps, f"paired portraits never overlap ({laps or 'none'})")
 
         print("\nLayout")
         page.goto(f"{BASE}/couples/", wait_until="networkidle")

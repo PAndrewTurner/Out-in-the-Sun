@@ -25,12 +25,11 @@ Two constraints the palette imposes, both measured rather than assumed:
   should not have its title in navy. Section titles on the other pages stay navy; only
   the book's name is orange.
 
-There is no signature widget. The boldness is spent on the illustrations and on scale.
-Home opens with the group watercolor of the book's first scene beside the title, then
-runs the three couples full width and alternating with their paintings at around 500px.
-The couples page carries what Home does not: the obstacle between each pair. No motion
-anywhere; the pages read well static and scroll-reveals on every section are the tell
-Section 5 of the brief warns about.
+There is no signature widget. The boldness is spent on scale: the home title runs to
+about 165px, the rules are 2px navy rather than hairline gray, and the navy block is edge
+to edge rather than a tinted panel. The couples page carries what Home does not: the
+obstacle between each pair. No motion anywhere; the pages read well static and
+scroll-reveals on every section are the tell Section 5 of the brief warns about.
 
 ## Tokens
 

@@ -31,8 +31,6 @@ OUT_DIR = ROOT / "static" / "img"
 # largest variant and the largest size the site may display one at.
 PORTRAIT_WIDTHS = (125, 250)
 COUPLE_WIDTHS = (400, 800)
-# The group watercolor is 896 wide, so 896 is the largest honest size.
-SCENE_WIDTHS = (448, 896)
 
 # Every major scraper expects this, and several ignore anything smaller.
 SHARE_SIZE = (1200, 630)
@@ -234,9 +232,6 @@ def main() -> int:
     process(manifest["portraits"], PORTRAIT_WIDTHS, "portraits")
     print("Couple images:")
     process(manifest["couples"], COUPLE_WIDTHS, "couple images")
-
-    print("Scenes:")
-    process(manifest.get("scenes", []), SCENE_WIDTHS, "scenes")
 
     print("Social card:")
     for entry in manifest.get("social", []):

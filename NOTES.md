@@ -2,6 +2,29 @@
 
 Design ideas tried and decisions made, newest first.
 
+## 2026-09-16: reverted the home page
+
+Andrew preferred the previous home layout, so it is back: title and hook, the row of six
+portraits, the navy synopsis block, three couple rows with portraits, and the link
+through to the narrators.
+
+Restored by pulling `templates/pages/index.html` and `static/css/site.css` from commit
+7c2ad477 through the GitHub API rather than rebuilding from memory, so it is the exact
+published version and nothing drifted. Noah before Diego survives, because that was a
+content change in `couples.yaml`, not a layout one.
+
+Kept from the reverted pass, since he did not ask to undo it: the couples page carries
+each pair's obstacle, which home does not, so the second page has a reason to exist.
+
+Dropped: the sideline watercolor is no longer on any page, so `images.yaml` and
+`images.py` stopped processing it and the generated files are gone. It is still the
+social sharing card, which is where it came from.
+
+What the attempt was worth: the diagnosis still stands even though the execution was
+rejected. The couple paintings are the strongest assets on the site and they are still
+only on a secondary page at 340px. If that is ever worth revisiting, revisit that one
+thing rather than rebuilding the whole page around it.
+
 ## 2026-09-16: put the art to work
 
 Andrew asked for a better design again. Four things were actually wrong, and none of
