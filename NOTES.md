@@ -2,6 +2,39 @@
 
 Design ideas tried and decisions made, newest first.
 
+## 2026-09-16: put the art to work
+
+Andrew asked for a better design again. Four things were actually wrong, and none of
+them were colour or type:
+
+1. **Six circles in a row with names under them is the "meet the team" pattern.** It was
+   the most templated element on the site and it sat directly under the title.
+2. **The best art was buried.** Three large paintings of these men kissing were on a
+   secondary page at 340px. Home is the page that has to make someone care.
+3. **No place and no weather.** The group watercolor, the one asset with atmosphere and
+   the only one showing the book's opening scene, existed only as a share card that
+   nobody visiting the site ever saw.
+4. **One rhythm throughout.** Hero, quote, three identical rows, band. Nothing varied in
+   scale, so nothing felt important.
+
+Rebuilt Home around the illustrations: the sideline watercolor in the hero with a caption
+saying that is where the book opens, then the three couples full width and alternating
+with their kiss paintings at around 500px, each with the two narrator portraits as small
+links. Dropped the six-circle row entirely, since the narrators page already does that job
+and it was the team-page tell.
+
+That made the couples page redundant, so it got the one thing Home does not carry: the
+obstacle between each pair. Home is who they are, couples is what is in the way.
+
+Deliberately no motion. The site reads well static, and scroll-reveals on every section
+are exactly the tell CLAUDE.md Section 5 warns about.
+
+Bug caught in passing: replacing a block of CSS by slicing between two comment anchors
+silently deleted the navy block, the couple marker and the onward link, because they sat
+between the two anchors. The page still rendered, just unstyled in three places. Slice
+CSS by exact rule, or check what is between the fences first.
+
+
 ## 2026-09-15: published, without git
 
 The site is live at https://pandrewturner.github.io/Out-in-the-Sun/.

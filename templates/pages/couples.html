@@ -9,8 +9,8 @@
   <div class="wrap head__in">
     <h1 class="head__title">The<br>couples</h1>
     <p class="head__note">
-      Three couples, at three different points in the same year. One is building,
-      one is beginning, and one has been circling each other for months.
+      Three couples, at three different points in the same year, and what stands
+      between each of them.
     </p>
   </div>
 </header>
@@ -30,6 +30,7 @@
       <p class="tag">{{ couple.billing }}</p>
       <h2 class="pair__name">{{ couple.name }}</h2>
       <p class="pair__body">{{ couple.summary }}</p>
+      <p class="pair__obstacle"><span>What is in the way</span> {{ couple.obstacle }}</p>
       <p class="pair__who">
         {% for person in couple.people %}<a href="{{ url('narrators/') }}#{{ person.slug }}">{{ person.name }}</a>{% if not loop.last %} and {% endif %}{% endfor %}
         each narrate their own chapters.
