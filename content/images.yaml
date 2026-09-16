@@ -1,0 +1,52 @@
+# Source files live in "Website Assets/" and are read-only. Only entries with
+# approved: true are processed. Alt text lives with the character and couple
+# content, not here.
+#
+# The six portraits were replaced on 2026-09-15 with 250x250 versions. Tyler's
+# file is named "Tyer.png" in the source folder. That looks like a typo, but the
+# rule is never to rename anything in "Website Assets/", so the manifest points
+# at the name as it is. Rename the source and this line together, or not at all.
+
+portraits:
+  - name: portrait-connor
+    source: Connor.png
+    approved: true
+  - name: portrait-tyler
+    source: Tyer.png
+    approved: true
+  - name: portrait-diego
+    source: Diego.png
+    approved: true
+  - name: portrait-noah
+    source: Noah.png
+    approved: true
+  - name: portrait-rami
+    source: Rami.png
+    approved: true
+  - name: portrait-caleb
+    source: Caleb.png
+    approved: true
+
+# Approved by Andrew on 2026-09-15 for the couples page. The Tier 2 and wedding
+# band questions in CLAUDE.md Section 6 are still open; flip any of these back to
+# false and rebuild to pull it from the site.
+couples:
+  - name: couple-connor-tyler
+    source: Connor and Tyler Kiss.png
+    approved: true
+  - name: couple-diego-noah
+    source: Diego and Noah Kiss.png
+    approved: true
+  - name: couple-rami-caleb
+    source: Caleb and Rami Kiss.png
+    approved: true
+
+# The social sharing card. A full-width band from the source, cropped to the
+# 1200x630 that Facebook, LinkedIn, Slack, iMessage and X all expect. "focus" is
+# the vertical centre of that band as a fraction of the source height, chosen so
+# every one of the six is in frame with the kiss in the middle.
+social:
+  - name: share-card
+    source: Group Photo.jpg
+    focus: 0.47
+    approved: true

@@ -1,0 +1,153 @@
+# The intro text is Andrew's own, from Website Assets/Out in the Sun Synopsis and
+# Characters.md, kept essentially verbatim. Edit it here.
+# tone: "open" or "guarded" sets which step of the couple color this narrator takes.
+
+- slug: connor
+  name: Connor
+  role: Financial analyst
+  place: Orlando
+  couple: connor-tyler
+  tone: open
+  color: "#7FB3E0"
+  portrait: portrait-connor
+  alt: >-
+    Painted portrait of Connor, bearded and looking off to one side, in a light
+    chambray shirt with backpack straps over his shoulders.
+  intro: >-
+    Connor is the heart of the friend group and the one who connected
+    everyone. An Orlando native and a financial analyst, he spent five years
+    building a career in Boston, where he met Tyler, and recently brought him
+    home to Florida. Connor wants the permanence that comes with long-term
+    relationships: he wants the house, the marriage, the joint bank accounts,
+    all the symbols and things established committed couples have. He has been
+    ready for a while. Tyler is not.
+  carries_label: What he carries
+  carries: >-
+    He has wanted the house and the marriage and the joint accounts for a while
+    now, and he has learned to want them quietly. Being the one who notices
+    everything also means being the one who waits.
+
+- slug: tyler
+  name: Tyler
+  role: Civil engineer
+  place: Orlando, by way of New England
+  couple: connor-tyler
+  tone: guarded
+  color: "#4A87C4"
+  portrait: portrait-tyler
+  alt: >-
+    Painted portrait of Tyler, clean-shaven and facing forward, in a blue
+    quarter-zip over a blue gingham shirt.
+  intro: >-
+    Tyler is a civil engineer and Connor's partner. A New England native,
+    he met Connor in Boston and later moved to Florida with him, where they got
+    an apartment together. Tyler is deeply devoted and in love with Connor, but
+    is scared of the permanence Connor wants: what if they fall out of love and
+    break up? What if one of them gets sick? What if a job disappears? The what
+    ifs keep Tyler from committing to the permanence that Connor so desires.
+  carries_label: What he carries
+  carries: >-
+    Commitment feels like adding load to a structure he has not finished
+    checking. What if they fall out of love and it ends. What if one of them
+    gets sick. What if a job disappears. He is not less sure of Connor. He is
+    less sure the world will let them keep this.
+
+- slug: diego
+  name: Diego
+  role: Studying for the LSAT
+  place: Orlando, by way of Miami
+  couple: diego-noah
+  tone: open
+  color: "#E98FAE"
+  portrait: portrait-diego
+  alt: >-
+    Painted portrait of Diego, short dark hair and a light beard, in a charcoal
+    t-shirt, beginning to smile.
+  intro: >-
+    Diego is a college graduate studying to take the LSAT and attend law
+    school. A warm, passionate, energetic person, he has developed an attraction
+    to Noah he has no idea how to be subtle about. They seem to be polar
+    opposites: Noah's careful calculation against Diego's open warmth. But
+    Diego's instinct is to close every gap he sees, and the man he wants might
+    need more room than that.
+  carries_label: What he carries
+  carries: >-
+    At twenty-two, a citizen, he was pulled over in Miami and held as though he
+    might not be from here, then charged with resisting while he was trying to
+    prove that he was. The case was thrown out. The city settled, admitted
+    nothing, and nothing changed. He came out of it knowing that being innocent
+    may not be enough.
+
+- slug: caleb
+  name: Caleb
+  role: Data scientist
+  place: Orlando
+  couple: rami-caleb
+  tone: guarded
+  color: "#4FA78A"
+  portrait: portrait-caleb
+  alt: >-
+    Painted portrait of Caleb in clear-framed glasses, wearing a gray
+    quarter-zip over a blue gingham shirt.
+  intro: >-
+    Caleb is a data scientist and sure that no one would ever want him.
+    After losing 180 pounds, Caleb has become a guy whom everyone seems to
+    desire; but this is something Caleb refuses, or is unable, to see. Then he
+    meets Rami, and the wall he built starts to crumble. But will Rami be patient
+    enough for the wall to fully come down?
+  carries_label: What he carries
+  carries: >-
+    He lost a hundred and eighty pounds over several years of real work, and he
+    kept the faint marks it left, on purpose, as a record of where he came from.
+    What stayed longer than the weight is what the years before it taught him:
+    that anyone who got close would eventually run the numbers and go. He has
+    never learned how to be chosen.
+
+- slug: rami
+  name: Rami
+  role: Content creator and business owner
+  place: Orlando
+  couple: rami-caleb
+  tone: open
+  color: "#8FD3BC"
+  portrait: portrait-rami
+  alt: >-
+    Painted portrait of Rami in black rectangular glasses and a stud earring,
+    wearing a cream cable-knit hoodie.
+  intro: >-
+    Rami is a social media influencer and small business owner. A gorgeous
+    man, he has always been objectified by every guy he has ever met. But then he
+    met Caleb, who valued him for far more than his looks, and Rami's world
+    turned upside down. Always being pursued, now it's Rami's turn to do the
+    pursuing; but courting Caleb may be the hardest challenge for him yet.
+  carries_label: What he carries
+  carries: >-
+    For years, men decided which part of him they wanted before he had said a
+    word, and he let it happen, because being wanted is fast and being loved is
+    slow. Doing the chasing, for once, and chasing someone who does not believe
+    he is being chased, is not a thing he has any practice at.
+
+- slug: noah
+  name: Noah
+  role: Political operative and advocate
+  place: Orlando and Washington, D.C.
+  couple: diego-noah
+  tone: guarded
+  color: "#C06284"
+  portrait: portrait-noah
+  alt: >-
+    Painted portrait of Noah in dark-framed glasses, in a navy suit and tie,
+    seen in profile.
+  intro: >-
+    Noah is a political operative and law school graduate who splits his
+    time between Washington, D.C. and Orlando, Florida. After the trauma of his
+    ex who was never what he seemed, Noah finds himself falling for Diego, a
+    happy and energetic light that brightens his careful worldview. But the
+    trauma of betrayal still lingers with him, and this hypervigilance may now be
+    fatal for his blossoming relationship.
+  carries_label: What he carries
+  carries: >-
+    Five years with a man who was unfaithful, and who came to resent him for
+    doing well. He got himself out. He still catches himself running a threat
+    assessment on ordinary kindness, and he knows he is doing it, and he does it
+    anyway.

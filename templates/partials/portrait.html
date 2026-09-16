@@ -1,0 +1,16 @@
+{#
+  A narrator portrait. Sized and positioned from the disc measured by
+  scripts/images.py, so the six match whatever the framing of each file.
+  Never wrap this in border-radius: the hair is painted breaking out of the
+  circle and masking would cut it off.
+#}
+<span class="por" style="--disc-top: {{ person.disc_top }}%; --disc-w: {{ person.disc_w }}">
+  <picture>
+    <source type="image/avif" sizes="{{ sizes }}"
+            srcset="{{ url('static/img/' ~ person.portrait ~ '-125.avif') }} 125w, {{ url('static/img/' ~ person.portrait ~ '-250.avif') }} 250w">
+    <source type="image/webp" sizes="{{ sizes }}"
+            srcset="{{ url('static/img/' ~ person.portrait ~ '-125.webp') }} 125w, {{ url('static/img/' ~ person.portrait ~ '-250.webp') }} 250w">
+    <img src="{{ url('static/img/' ~ person.portrait ~ '-125.png') }}" width="250" height="{{ person.h }}"
+         alt="{{ person.alt }}" loading="lazy" decoding="async">
+  </picture>
+</span>

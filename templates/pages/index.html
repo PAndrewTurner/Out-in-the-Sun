@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+
+<header class="head">
+  <div class="wrap">
+    <div class="head__in">
+      <div>
+        <h1 class="head__title">Out in<br>the Sun</h1>
+        <p class="head__by">{{ site.author }}</p>
+      </div>
+      <p class="head__lead">{{ site.hook }}</p>
+    </div>
+
+    <ul class="six">
+      {% for person in ordered %}
+      <li>
+        <a href="{{ url('narrators/') }}#{{ person.slug }}">
+          {% with sizes = "(min-width: 44em) 14vw, 28vw" %}{% include "partials/portrait.html" %}{% endwith %}
+          <span class="six__name">{{ person.name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</header>
+
+<section class="night" aria-labelledby="about">
+  <div class="wrap">
+    <h2 class="visually-hidden" id="about">About the book</h2>
+    <p class="night__blurb">{{ site.synopsis }}</p>
+  </div>
+</section>
+
+<section aria-labelledby="couples-heading">
+  <h2 class="visually-hidden" id="couples-heading">The three couples</h2>
+  {% for couple in couples %}
+  <article class="couple" id="{{ couple.slug }}" style="--tone: {{ couple.tint }}">
+    <div class="wrap couple__in">
+      <div class="couple__faces">
+        {% for person in couple.people %}
+          {% with sizes = "(min-width: 56em) 11.25rem, 30vw" %}{% include "partials/portrait.html" %}{% endwith %}
+        {% endfor %}
+      </div>
+      <div>
+        <p class="tag">{{ couple.billing }}</p>
+        <h3 class="couple__name">{{ couple.name }}</h3>
+        <p class="couple__body">{{ couple.summary }}</p>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<div class="wrap onward"><a href="{{ url('narrators/') }}">Meet the six narrators</a></div>
+
+{% endblock %}

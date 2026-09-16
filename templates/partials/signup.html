@@ -1,0 +1,15 @@
+<section class="signup" aria-labelledby="signup-heading">
+  <div class="wrap signup__in">
+    <div>
+      <h2 class="signup__heading" id="signup-heading">{{ site.signup.heading }}</h2>
+      <p class="signup__body">{{ site.signup.body }}</p>
+      <p class="signup__note">{{ site.signup.placeholder_note }}</p>
+    </div>
+    <form class="signup__form">
+      <label class="visually-hidden" for="signup-email">Email address</label>
+      <input class="signup__input" id="signup-email" type="email" name="email"
+             placeholder="you@example.com" autocomplete="email" disabled>
+      <button class="signup__button" type="submit" disabled>{{ site.signup.button }}</button>
+    </form>
+  </div>
+</section>

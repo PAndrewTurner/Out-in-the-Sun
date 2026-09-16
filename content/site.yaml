@@ -1,0 +1,53 @@
+title: Out in the Sun
+author: P. Andrew Turner
+hook: Three couples. Six voices. One year in Orlando.
+description: >-
+  A literary queer romance by P. Andrew Turner. Three couples in Orlando, six
+  narrators taking turns, and a year of learning that love is a decision you
+  keep making.
+
+# Andrew's own synopsis, from Website Assets/Out in the Sun Synopsis and
+# Characters.md, kept verbatim. This is the copy on the home page. Edit it here.
+synopsis: >-
+  A contemporary queer romance novel set in Orlando, Florida. Out in the Sun
+  follows three couples and the friend group that holds them together through a
+  year of love, old wounds, and hard-won growth. Warm, fun, and occasionally
+  steamy, it's a story of six men, six unique voices, trying to love well and be
+  loved back.
+
+# Set by the deploy workflow. Empty means the site is served from the domain root.
+base_url: ""
+
+# Scheme and host only, no trailing slash. Social cards need absolute URLs, so
+# this is prefixed to the share image path.
+origin: "https://pandrewturner.github.io"
+
+share:
+  alt: >-
+    Watercolor illustration of the six men together on a soccer sideline in
+    rainbow jerseys at golden hour, two of them kissing at the center.
+
+nav:
+  - { label: Home, href: "" }
+  - { label: The couples, href: "couples/" }
+  - { label: The narrators, href: "narrators/" }
+
+signup:
+  heading: Keep up with the book
+  body: >-
+    New chapters, illustrations, and the occasional note about how it is going.
+    No more than once a month.
+  placeholder_note: >-
+    The sign-up form is not connected yet. Check back soon.
+  button: Sign up
+
+content_notes:
+  heading: Content notes
+  intro: "This book is written for adult readers. It contains:"
+  entries:
+    - Explicit sexual content between adult men
+    - Racial profiling and police misconduct, including a wrongful detention
+    - Infidelity in a past relationship
+    - Sexual objectification, discussed as past experience
+    - Body image
+    - Strong language

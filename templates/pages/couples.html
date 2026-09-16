@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}The couples · {{ site.title }}{% endblock %}
+{% block description %}The three couples of Out in the Sun: Connor and Tyler, Diego and Noah, Rami and Caleb.{% endblock %}
+
+{% block content %}
+{% set sizes = "(min-width: 60em) 31vw, (min-width: 40em) 45vw, 88vw" %}
+
+<header class="head">
+  <div class="wrap head__in">
+    <h1 class="head__title">The<br>couples</h1>
+    <p class="head__note">
+      Three couples, at three different points in the same year. One is building,
+      one is beginning, and one has been circling each other for months.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="pairs">
+    {% for couple in couples %}
+    <article class="pair" id="{{ couple.slug }}" style="--tone: {{ couple.tint }}">
+      <picture class="pair__image">
+        <source type="image/avif" sizes="{{ sizes }}"
+                srcset="{{ url('static/img/' ~ couple.image ~ '-400.avif') }} 400w, {{ url('static/img/' ~ couple.image ~ '-800.avif') }} 800w">
+        <source type="image/webp" sizes="{{ sizes }}"
+                srcset="{{ url('static/img/' ~ couple.image ~ '-400.webp') }} 400w, {{ url('static/img/' ~ couple.image ~ '-800.webp') }} 800w">
+        <img src="{{ url('static/img/' ~ couple.image ~ '-400.png') }}" width="400" height="400"
+             alt="{{ couple.alt }}" loading="lazy" decoding="async">
+      </picture>
+      <p class="tag">{{ couple.billing }}</p>
+      <h2 class="pair__name">{{ couple.name }}</h2>
+      <p class="pair__body">{{ couple.summary }}</p>
+      <p class="pair__who">
+        {% for person in couple.people %}<a href="{{ url('narrators/') }}#{{ person.slug }}">{{ person.name }}</a>{% if not loop.last %} and {% endif %}{% endfor %}
+        each narrate their own chapters.
+      </p>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

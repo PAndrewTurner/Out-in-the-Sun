@@ -1,0 +1,313 @@
+/* Out in the Sun
+   White carries the page and the reading. Navy is the ink, and the one block
+   where the book states its thesis. Pastel orange is display type on navy, the
+   sign-up band, and the couple markers. Each color has one job.
+   ------------------------------------------------------------------------- */
+
+:root {
+  --navy: #1B2A4A;
+  --navy-900: #101B32;
+  --mute: #5A6B8C;
+  --sun: #FFC49B;
+  /* The book is called Out in the Sun, so its title is not set in navy. The
+     pastel is 1.54:1 on white and unusable there, so the title takes a brighter,
+     denser orange. 3.51:1, which clears the 3:1 minimum for text this size.
+     --sun-ink is the same hue pushed far enough to carry small text, 4.94:1. */
+  --sun-bright: #E2620B;
+  --sun-ink: #BE4D02;
+  --white: #FFFFFF;
+  --warm: #F2E4D8;
+  --line: #DCE2E8;
+
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --body: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  --page: 80rem;
+  --gutter: 1.25rem;
+}
+
+@media (min-width: 40em) { :root { --gutter: 2.5rem; } }
+@media (min-width: 64em) { :root { --gutter: 4rem; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 1, 'opsz' 144;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1.25rem; }
+p:last-child { margin-bottom: 0; }
+img { max-width: 100%; height: auto; }
+
+a { color: var(--navy); text-underline-offset: 0.18em; text-decoration-thickness: 2px; }
+a:hover { color: var(--mute); }
+
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+
+.wrap { max-width: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip {
+  position: absolute; left: var(--gutter); top: -4rem; z-index: 10;
+  background: var(--navy); color: var(--sun);
+  padding: 0.7rem 1.1rem; font-weight: 700; text-decoration: none;
+  transition: top 120ms ease;
+}
+.skip:focus { top: 0.75rem; }
+
+/* Masthead ---------------------------------------------------------------- */
+
+.bar {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem;
+  justify-content: space-between; align-items: baseline;
+  padding: 1.25rem 0;
+  border-bottom: 2px solid var(--navy);
+}
+.bar__mark {
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 1, 'opsz' 24;
+  font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--sun-ink);
+}
+.bar__mark:hover { color: var(--navy); }
+.bar nav { display: flex; gap: 1.5rem; font-size: 0.82rem; font-weight: 650; }
+.bar nav a { text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; }
+.bar nav a:hover { border-bottom-color: var(--sun); color: var(--navy); }
+.bar nav a[aria-current='page'] { border-bottom-color: var(--navy); }
+
+/* Page heads -------------------------------------------------------------- */
+
+.head { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2rem, 5vw, 3rem); }
+.head__in { display: grid; gap: clamp(1.5rem, 4vw, 3rem); }
+@media (min-width: 62em) {
+  .head__in { grid-template-columns: 1.5fr 1fr; align-items: end; gap: clamp(2rem, 5vw, 4rem); }
+}
+.head__title {
+  font-size: clamp(3rem, 13vw, 9rem);
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+}
+.home .head__title { font-size: clamp(3.4rem, 15.5vw, 11.5rem); color: var(--sun-bright); }
+.head__by { margin: clamp(1rem, 2.5vw, 1.6rem) 0 0; font-size: 0.95rem; font-weight: 650; letter-spacing: 0.08em; color: var(--mute); }
+.head__lead {
+  margin: 0;
+  /* Centred against the title block rather than sitting on its baseline. */
+  align-self: center;
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 0, 'opsz' 48;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 3.4vw, 2.35rem);
+  line-height: 1.12;
+  max-width: 16ch;
+}
+.head__note { margin: 0; padding-bottom: 0.4em; max-width: 34ch; font-size: clamp(1.02rem, 1.5vw, 1.15rem); }
+
+/* Portraits
+   Sized and aligned by the measured painted disc, so the six match whatever
+   their framing. Never border-radius these: the hair is painted breaking out
+   of the circle and masking would cut it off. -------------------------------- */
+
+.por { display: block; width: 100%; transform: translateY(calc(var(--disc-top, 0%) * -1)); }
+.por img {
+  display: block;
+  /* Scaled so every painted disc comes out the same diameter. */
+  width: calc(100% * var(--disc-norm, 0.892) / var(--disc-w, 0.892));
+  margin-inline: auto;
+}
+
+/* Home: the six ----------------------------------------------------------- */
+
+.six {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: clamp(0.5rem, 1.6vw, 1.1rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: 2px solid var(--navy);
+  list-style: none;
+}
+@media (max-width: 44em) { .six { grid-template-columns: repeat(3, 1fr); row-gap: 1.75rem; } }
+.six li { margin: 0; text-align: center; }
+.six a { display: block; text-decoration: none; }
+.six a:hover .six__name { color: var(--mute); }
+.six__name { display: block; margin-top: 0.7rem; font-size: 0.82rem; font-weight: 700; }
+
+/* The navy block ---------------------------------------------------------- */
+
+.night { background: var(--navy); color: var(--warm); padding: clamp(3.5rem, 10vw, 7rem) 0; }
+.night__blurb {
+  margin: 0;
+  max-width: 30ch;
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 0, 'opsz' 72;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 3.1vw, 2.3rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--sun);
+}
+
+/* Home: couple rows ------------------------------------------------------- */
+
+.couple { border-top: 1px solid var(--line); padding: clamp(2.75rem, 7vw, 4.5rem) 0; }
+.couple:first-of-type { border-top: 0; padding-top: clamp(3rem, 8vw, 5.5rem); }
+.couple__in { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+@media (min-width: 56em) { .couple__in { grid-template-columns: auto minmax(0, 1fr); } }
+.couple__faces { display: flex; gap: 1.1rem; }
+.couple__faces .por { width: clamp(8rem, 18vw, 13.75rem); flex: none; }
+.couple__name { font-size: clamp(2.1rem, 6vw, 3.8rem); }
+.couple__body { margin: 1rem 0 0; max-width: 46ch; font-weight: 430; }
+
+.tag {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.82rem; font-weight: 700; color: var(--mute);
+  margin: 0 0 0.5rem;
+}
+.tag::before {
+  content: ''; width: 0.75rem; height: 0.75rem;
+  border-radius: 50%; background: var(--tone); flex: none;
+}
+
+.onward { padding: clamp(2.5rem, 7vw, 4.5rem) 0; border-top: 1px solid var(--line); }
+.onward a {
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 1, 'opsz' 60;
+  font-weight: 800; font-size: clamp(1.5rem, 4.5vw, 2.6rem);
+  letter-spacing: -0.03em; text-decoration: none;
+  border-bottom: 3px solid var(--sun); padding-bottom: 0.1em;
+}
+.onward a:hover { border-bottom-color: var(--navy); }
+.onward a::after { content: ' \2192'; }
+
+/* Couples page ------------------------------------------------------------ */
+
+.pairs {
+  padding: clamp(2.5rem, 7vw, 4rem) 0 clamp(3rem, 8vw, 5rem);
+  display: grid; gap: clamp(2.5rem, 6vw, 3rem);
+}
+@media (min-width: 40em) and (max-width: 59.999em) {
+  .pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 60em) { .pairs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 40em) {
+    /* One row per child, so the three columns line up across. */
+    .pairs { grid-template-rows: repeat(5, auto); }
+    .pair { grid-row: span 5; grid-template-rows: subgrid; }
+  }
+}
+.pair { display: grid; align-content: start; gap: 0; }
+.pair__image { display: block; margin-bottom: clamp(1.25rem, 3vw, 1.75rem); }
+.pair__image img { display: block; width: 100%; height: auto; }
+.pair__name {
+  font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  margin: 0 0 0.8rem; padding-bottom: 0.8rem;
+  border-bottom: 3px solid var(--tone);
+}
+.pair__body { margin: 0 0 1.1rem; font-weight: 430; }
+.pair__who { margin: 0; font-size: 0.88rem; color: var(--mute); }
+
+/* Narrators page ---------------------------------------------------------- */
+
+.who { border-top: 1px solid var(--line); padding: clamp(2.5rem, 6vw, 4rem) 0; }
+.who:first-of-type { border-top: 2px solid var(--navy); }
+.who__in {
+  /* Narrower than the page so the blurb fills its column instead of leaving a
+     void on the right. The left edge still lines up with the heading above. */
+  display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start;
+  max-width: 62rem; margin-inline-end: auto;
+}
+@media (min-width: 54em) { .who__in { grid-template-columns: auto minmax(0, 1fr); } }
+.who__portrait { width: clamp(9rem, 22vw, 15.5rem); }
+.who__name { font-size: clamp(2.4rem, 7vw, 4.6rem); }
+.who__role { margin: 0.55rem 0 0; font-size: 0.92rem; font-weight: 600; color: var(--mute); }
+.who__role span { opacity: 0.45; padding: 0 0.2em; }
+.who__blurb { margin: 1.1rem 0 0; max-width: 58ch; font-weight: 430; }
+
+/* Tier 1 reveal ----------------------------------------------------------- */
+
+.reveal { margin-top: 1.6rem; max-width: 58ch; }
+.reveal__button {
+  font: inherit; font-size: 0.86rem; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: none; border: 0; border-bottom: 2px solid var(--navy);
+  color: var(--navy); padding: 0.3rem 0; cursor: pointer;
+}
+.reveal__button:hover { color: var(--mute); }
+.reveal__mark {
+  width: 0.7rem; height: 0.7rem; flex: none; background: var(--tone);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  transition: transform 160ms ease;
+}
+.reveal__button[aria-expanded='true'] .reveal__mark { transform: rotate(90deg); }
+.reveal__panel { border-left: 3px solid var(--tone); padding-left: 1.1rem; margin-top: 1.2rem; }
+.reveal__panel[hidden] { display: none; }
+.reveal__cn { font-size: 0.86rem; margin-top: 0.8rem; margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) { .reveal__mark { transition: none; } }
+
+/* Content notes ----------------------------------------------------------- */
+
+.notes {
+  background: var(--navy); color: var(--warm);
+  padding: clamp(3rem, 8vw, 5.5rem) 0;
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+.notes__heading { font-size: clamp(1.8rem, 5vw, 3.2rem); color: var(--sun); }
+.notes p { margin: 1rem 0 1.4rem; max-width: 44ch; }
+.notes ul { columns: 2; column-gap: 3rem; column-width: 16rem; margin: 0; padding-left: 1.1rem; font-size: 0.97rem; }
+.notes li { margin-bottom: 0.5rem; break-inside: avoid; }
+
+/* Sign-up ----------------------------------------------------------------- */
+
+.signup { background: var(--sun); color: var(--navy); padding: clamp(2.75rem, 7vw, 4.5rem) 0; }
+.signup__in { display: grid; gap: 1.5rem; align-items: center; }
+@media (min-width: 56em) { .signup__in { grid-template-columns: 1fr auto; } }
+.signup__heading { font-size: clamp(1.7rem, 4.2vw, 2.8rem); }
+.signup__body { margin: 0.7rem 0 0; max-width: 38ch; font-weight: 450; }
+.signup__form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.signup__input {
+  font: inherit; padding: 0.8rem 1rem;
+  border: 2px solid var(--navy); background: var(--white); color: var(--navy);
+  min-width: 14rem; flex: 1 1 14rem;
+}
+.signup__input::placeholder { color: var(--mute); }
+.signup__button {
+  font: inherit; font-weight: 700; padding: 0.8rem 1.5rem;
+  border: 2px solid var(--navy); background: var(--navy); color: var(--sun); cursor: pointer;
+}
+.signup__input:disabled, .signup__button:disabled { cursor: not-allowed; opacity: 0.78; }
+.signup__note { margin: 0.9rem 0 0; font-size: 0.85rem; color: var(--navy); opacity: 0.75; }
+
+/* Footer ------------------------------------------------------------------ */
+
+.foot { background: var(--navy-900); color: var(--warm); padding: clamp(2rem, 5vw, 3rem) 0; }
+.foot__book {
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 1, 'opsz' 36;
+  font-weight: 800; font-size: 1.3rem; color: var(--sun); margin-bottom: 0.5rem;
+}
+.foot__book span { color: var(--warm); font-weight: 500; }
+.foot__note { margin: 0; font-size: 0.8rem; opacity: 0.65; }
+.foot :focus-visible { outline-color: var(--sun); }

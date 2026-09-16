@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}The narrators · {{ site.title }}{% endblock %}
+{% block description %}The six men who tell Out in the Sun: Connor, Tyler, Diego, Noah, Rami, and Caleb.{% endblock %}
+
+{% block content %}
+{% set sizes = "(min-width: 54em) 15.5rem, 45vw" %}
+
+<header class="head">
+  <div class="wrap head__in">
+    <h1 class="head__title">The<br>narrators</h1>
+    <p class="head__note">
+      Six men take turns telling one year. They are paired here the way they are
+      paired in the book.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+  {% for couple in couples %}
+  {% for person in couple.people %}
+  <article class="who" id="{{ person.slug }}" style="--tone: {{ person.color }}">
+    <div class="who__in">
+      <div class="who__portrait">{% include "partials/portrait.html" %}</div>
+      <div>
+        <h2 class="who__name">{{ person.name }}</h2>
+        <p class="who__role">{{ person.role }} <span>·</span> {{ person.place }}</p>
+        <p class="who__blurb">{{ person.intro }}</p>
+
+        <div class="reveal">
+          <button class="reveal__button" type="button" aria-expanded="false" aria-controls="carries-{{ person.slug }}">
+            <span class="reveal__mark" aria-hidden="true"></span>
+            {{ person.carries_label }}
+          </button>
+          <div class="reveal__panel" id="carries-{{ person.slug }}" hidden>
+            <p>{{ person.carries }}</p>
+            <p class="reveal__cn"><a href="#content-notes">See the content notes</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+  {% endfor %}
+</div>
+
+<section class="notes" id="content-notes" aria-labelledby="notes-heading">
+  <div class="wrap">
+    <h2 class="notes__heading" id="notes-heading">{{ site.content_notes.heading }}</h2>
+    <p>{{ site.content_notes.intro }}</p>
+    <ul>{% for item in site.content_notes.entries %}<li>{{ item }}</li>{% endfor %}</ul>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}<script src="{{ url('static/js/reveal.js') }}" defer></script>{% endblock %}
