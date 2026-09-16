@@ -1,0 +1,21 @@
+# The manuscript and every unapproved asset. Never commit these.
+private/
+Website Assets/
+Archive/
+Charcters/
+New Photos/
+*.docx
+*.pages
+
+# Build output
+dist/
+shots/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# macOS
+.DS_Store
