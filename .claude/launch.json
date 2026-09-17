@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "uv",
-      "runtimeArgs": ["run", "python", "-m", "http.server", "-d", "dist", "8000"],
-      "port": 8000
+      "runtimeExecutable": ".venv/bin/python3",
+      "runtimeArgs": ["scripts/serve.py"],
+      "port": 8000,
+      "autoPort": true
     }
   ]
 }

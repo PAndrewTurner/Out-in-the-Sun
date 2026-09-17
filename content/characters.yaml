@@ -1,5 +1,9 @@
 # The intro text is Andrew's own, from Website Assets/Out in the Sun Synopsis and
 # Characters.md, kept essentially verbatim. Edit it here.
+#
+# The "canon" block is drawn strictly from Section 4 of CLAUDE.md, which Andrew has
+# verified against the manuscript. Nothing in it is invented. Add to it only from
+# Section 4 or from Andrew directly.
 # tone: "open" or "guarded" sets which step of the couple color this narrator takes.
 
 - slug: connor
@@ -21,6 +25,22 @@
     relationships: he wants the house, the marriage, the joint bank accounts,
     all the symbols and things established committed couples have. He has been
     ready for a while. Tyler is not.
+  canon:
+    - label: What he does
+      text: >-
+        Financial analyst, with a background in finance and data science. He
+        spent five years building that career in Boston before he came home.
+    - label: Where he is from
+      text: >-
+        An Orlando native. His mother is twenty minutes away in Longwood. He
+        kayaks the Econlockhatchee off Snow Hill Road, where the water runs
+        tea-dark under the trees.
+    - label: How he is connected
+      text: >-
+        He is the one who connected everyone. Tyler he met in Boston and
+        brought south with him. Caleb he sees two floors away in the same
+        building. The group holds together in large part because Connor
+        introduced its pieces to each other.
   carries_label: What he carries
   carries: >-
     He has wanted the house and the marriage and the joint accounts for a while
@@ -45,6 +65,20 @@
     is scared of the permanence Connor wants: what if they fall out of love and
     break up? What if one of them gets sick? What if a job disappears? The what
     ifs keep Tyler from committing to the permanence that Connor so desires.
+  canon:
+    - label: What he does
+      text: >-
+        Civil engineer, working on site inspections and structures. He studied
+        calculus and statistics before he studied engineering.
+    - label: Where he is from
+      text: >-
+        A New England native. He left eight years of Boston to come south with
+        Connor, deliberately and without reservation.
+    - label: How he is connected
+      text: >-
+        Outside his own couple, his thread into the group runs through Noah,
+        who he plays alongside every week in the Out Pride Soccer League. He
+        is not the one who fills a silence, but he is reliably there.
   carries_label: What he carries
   carries: >-
     Commitment feels like adding load to a structure he has not finished
@@ -70,6 +104,20 @@
     opposites: Noah's careful calculation against Diego's open warmth. But
     Diego's instinct is to close every gap he sees, and the man he wants might
     need more room than that.
+  canon:
+    - label: What he does
+      text: >-
+        A college graduate studying for the LSAT. He is going to be a trial
+        lawyer and he is certain of it, because he believes that if he says
+        enough words fast enough he can fix anything.
+    - label: Where he is from
+      text: >-
+        Orlando, by way of Miami.
+    - label: How he is connected
+      text: >-
+        Noah is the one he wants, and he has no idea how to be subtle about
+        it. With everyone else he is exactly the same: warm, unfiltered, and
+        impossible not to like. He is also late to all of it.
   carries_label: What he carries
   carries: >-
     At twenty-two, a citizen, he was pulled over in Miami and held as though he
@@ -95,6 +143,19 @@
     desire; but this is something Caleb refuses, or is unable, to see. Then he
     meets Rami, and the wall he built starts to crumble. But will Rami be patient
     enough for the wall to fully come down?
+  canon:
+    - label: What he does
+      text: >-
+        Data scientist.
+    - label: Where he is from
+      text: >-
+        Orlando. Tall and well built, dark hair styled with care, clear-framed
+        glasses, and a nightly skincare routine he will describe if you ask.
+    - label: How he is connected
+      text: >-
+        He works two floors from Connor in the same building. Rami he has
+        known for years, in the same circle of friends, without ever once
+        suspecting what Rami wanted from him.
   carries_label: What he carries
   carries: >-
     He lost a hundred and eighty pounds over several years of real work, and he
@@ -120,6 +181,19 @@
     met Caleb, who valued him for far more than his looks, and Rami's world
     turned upside down. Always being pursued, now it's Rami's turn to do the
     pursuing; but courting Caleb may be the hardest challenge for him yet.
+  canon:
+    - label: What he does
+      text: >-
+        A content creator known to millions of followers as Zane, and the
+        owner of a clothing brand with staff on the payroll.
+    - label: Where he is from
+      text: >-
+        Orlando. Palestinian: tan skin and thick dark hair.
+    - label: How he is connected
+      text: >-
+        He met Noah through advocacy work and he is close with his friend
+        Jodi. Caleb he has known a long time, in the same circle, well before
+        he started trying to be noticed by him.
   carries_label: What he carries
   carries: >-
     For years, men decided which part of him they wanted before he had said a
@@ -145,6 +219,21 @@
     happy and energetic light that brightens his careful worldview. But the
     trauma of betrayal still lingers with him, and this hypervigilance may now be
     fatal for his blossoming relationship.
+  canon:
+    - label: What he does
+      text: >-
+        Political operative and LGBTQ+ advocate, with a law degree from
+        Georgetown.
+    - label: Where he is from
+      text: >-
+        He splits his life between Orlando and an apartment in Washington,
+        D.C.
+    - label: How he is connected
+      text: >-
+        He met Rami through advocacy work, and he plays soccer with Tyler in
+        the Out Pride league. He travels more than the rest of them, and
+        still, whatever room the group is in, he is always already there when
+        you arrive.
   carries_label: What he carries
   carries: >-
     Five years with a man who was unfaithful, and who came to resent him for

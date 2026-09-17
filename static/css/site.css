@@ -250,6 +250,8 @@ a:hover { color: var(--mute); }
 @media (min-width: 54em) { .who__in { grid-template-columns: auto minmax(0, 1fr); } }
 .who__portrait { width: clamp(9rem, 22vw, 15.5rem); }
 .who__name { font-size: clamp(2.4rem, 7vw, 4.6rem); }
+.who__name a { text-decoration: none; }
+.who__name a:hover { color: var(--sun-ink); }
 .who__role { margin: 0.55rem 0 0; font-size: 0.92rem; font-weight: 600; color: var(--mute); }
 .who__role span { opacity: 0.45; padding: 0 0.2em; }
 .who__blurb { margin: 1.1rem 0 0; max-width: 58ch; font-weight: 430; }
@@ -320,3 +322,81 @@ a:hover { color: var(--mute); }
 .foot__book span { color: var(--warm); font-weight: 500; }
 .foot__note { margin: 0; font-size: 0.8rem; opacity: 0.65; }
 .foot :focus-visible { outline-color: var(--sun); }
+
+/* Narrator bio pages ------------------------------------------------------ */
+
+/* One column width for the whole page, as on the narrators index, so the
+   portrait, the facts, the wound and the sign-up share a left edge. */
+.page-bio { --page: 64rem; }
+
+
+.bio__head { padding: clamp(2.5rem, 7vw, 4.5rem) 0 clamp(2rem, 5vw, 3rem); }
+.bio__head-in { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+@media (min-width: 54em) { .bio__head-in { grid-template-columns: auto minmax(0, 1fr); } }
+
+.bio__portrait { width: clamp(9rem, 22vw, 15.5rem); }
+.bio__eyebrow { margin: 0 0 0.75rem; font-size: 0.85rem; font-weight: 700; }
+.bio__eyebrow a { color: var(--mute); text-decoration: none; }
+.bio__eyebrow a::before { content: '\2190  '; }
+.bio__eyebrow a:hover { color: var(--navy); }
+
+.bio__name {
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+  color: var(--sun-bright);
+}
+.bio__role { margin: 0.7rem 0 0; font-size: 1rem; font-weight: 600; color: var(--mute); }
+.bio__role span { opacity: 0.45; padding: 0 0.2em; }
+.bio__blurb { margin: 1.4rem 0 0; max-width: 54ch; font-size: clamp(1.0625rem, 1.25vw, 1.15rem); font-weight: 430; }
+
+/* The facts: what is verified about him, one claim per row ----------------- */
+
+.bio__facts { padding-bottom: clamp(2.5rem, 6vw, 4rem); }
+.bio__facts dl { margin: 0; }
+.fact {
+  display: grid; gap: 0.3rem 3rem;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem) 0;
+  border-top: 1px solid var(--line);
+}
+.fact:first-child { border-top: 2px solid var(--navy); }
+@media (min-width: 46em) { .fact { grid-template-columns: 13rem minmax(0, 1fr); } }
+.fact dt { font-size: 0.85rem; font-weight: 700; color: var(--mute); }
+.fact dd { margin: 0; max-width: 54ch; font-weight: 430; }
+
+/* What he carries. Visible here rather than behind a reveal, so the content
+   note comes first instead of the toggle acting as the consent step. -------- */
+
+.carries { background: var(--navy); color: var(--warm); padding: clamp(2.75rem, 7vw, 4.5rem) 0; }
+.carries__note {
+  margin: 0 0 1.5rem; max-width: 46ch; font-size: 0.86rem;
+  color: var(--warm); opacity: 0.8;
+  border-left: 3px solid var(--tone); padding-left: 0.9rem;
+}
+.carries__note a { color: var(--sun); }
+.carries__heading { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--sun); margin-bottom: 1rem; }
+.carries__body { margin: 0; max-width: 52ch; font-size: clamp(1.0625rem, 1.25vw, 1.15rem); font-weight: 430; }
+
+/* His couple -------------------------------------------------------------- */
+
+.bio__with { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(2rem, 5vw, 3rem); }
+.bio__with-name { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin: 0 0 0.8rem; }
+.bio__with-name a { text-decoration: none; border-bottom: 3px solid var(--sun); padding-bottom: 0.08em; }
+.bio__with-name a:hover { border-bottom-color: var(--navy); }
+.bio__with-body { margin: 0; max-width: 50ch; font-weight: 430; }
+
+/* Walking the six in the order they are introduced ------------------------- */
+
+.bio__nav {
+  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;
+  padding: clamp(1.75rem, 4vw, 2.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+.bio__nav a {
+  font-family: var(--display);
+  font-variation-settings: 'SOFT' 95, 'WONK' 1, 'opsz' 48;
+  font-weight: 800; font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+  letter-spacing: -0.02em; text-decoration: none;
+}
+.bio__nav a:hover { color: var(--sun-ink); }
+.bio__nav span { display: block; font-family: var(--body); font-size: 0.8rem; font-weight: 650; color: var(--mute); letter-spacing: 0; }
+.bio__next { text-align: right; }

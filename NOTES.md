@@ -2,6 +2,78 @@
 
 Design ideas tried and decisions made, newest first.
 
+## 2026-09-16: the preview was showing a stale stylesheet
+
+Andrew: the server version looks nothing like the screenshots. It did not, and the build
+was fine. Two separate faults stacked up.
+
+**The browser was holding an old stylesheet.** `http.server` sends `Last-Modified` but no
+`ETag` and no `Cache-Control`, so browsers cache heuristically and stop revalidating. The
+page was rendering correct HTML against CSS from several edits earlier, which looks
+exactly like a broken build and is not one. `scripts/serve.py` now sends
+`Cache-Control: no-store` on everything.
+
+**An orphaned server was holding the port.** The harness had recorded its preview as
+stopped 21 minutes earlier, but a `serve.py` process was still listening on 8000 and
+answering requests. Killed by PID, not by pattern, because a `pkill -f "scripts/serve.py"`
+earlier in this session also killed the live preview and produced a confusing exit 143.
+
+**Production had the same latent bug**, so it got fixed too: GitHub Pages caches assets,
+and a republish can hand a returning visitor new HTML against the previous deploy's CSS.
+`build.py` now fingerprints asset URLs with a content hash, so a changed file is a
+changed URL.
+
+Diagnostic worth repeating: rather than guessing, read the live DOM. Asking the page for
+its URL, its body class and whether `.bio__name` existed in any loaded stylesheet found
+the cause in one call.
+
+
+## 2026-09-16: bio pages, second pass
+
+Andrew cut "How he sounds" and reworked "How he is connected".
+
+Both notes were right. The voice row described prose style, which is a thing a reader
+discovers rather than something a website tells them, and it was the one row closest to
+me writing criticism of the book rather than reporting facts about a man.
+
+The connection rows were narrating plot: "he meets Noah in the first chapter". They now
+describe the actual web of ties in Section 4, which is genuinely interesting on its own:
+Connor connected everyone, Caleb sits two floors from him at work, Tyler's only thread
+outside his own couple is soccer with Noah, Noah met Rami through advocacy, Rami and
+Caleb have been in the same circle for years.
+
+Also deduplicated. Connor's mother in Longwood and Noah's split life were appearing in
+two rows on the same page. Each row has to earn its place.
+
+Three rows now instead of four: what he does, where he is from, how he is connected.
+
+## 2026-09-16: a page per narrator
+
+Six new pages at `/narrators/<name>/`. Each one opens with Andrew's blurb, then four
+facts (what he does, where he is from, how he is connected, how he sounds), then the
+wound, then his couple, then links to the man before and after him in the introduction
+order.
+
+**Where the content came from matters here.** I did not write any of it. The facts are
+lifted from Section 4 of CLAUDE.md, which Andrew has already verified against the
+manuscript, and restructured into a `canon` block in `characters.yaml` with a comment
+saying only to extend it from Section 4 or from Andrew. After being told twice that he
+preferred his own words, the rule now is that the site carries his prose and verified
+canon, and nothing else.
+
+**The wound is visible here rather than behind a reveal**, at Andrew's direction. A bio
+page is already a deliberate click into one man, so the toggle was redundant. But that
+removes the consent step, so a content note now sits above it and links to the full list.
+The audit asserts that note exists and mentions the content notes.
+
+One thing deliberately left out: Section 4 gives Rami green eyes and the illustration
+shows brown. That conflict is still open, so his page says Palestinian, tan skin and
+thick dark hair, and stops there rather than picking a side.
+
+The bio pages scope `--page` to 64rem, as the narrators index does at 60rem, so the
+portrait, the facts, the wound and the sign-up all share one left edge.
+
+
 ## 2026-09-16: reverted the home page
 
 Andrew preferred the previous home layout, so it is back: title and hook, the row of six

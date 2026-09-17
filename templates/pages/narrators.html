@@ -22,7 +22,7 @@
     <div class="who__in">
       <div class="who__portrait">{% include "partials/portrait.html" %}</div>
       <div>
-        <h2 class="who__name">{{ person.name }}</h2>
+        <h2 class="who__name"><a href="{{ url('narrators/' ~ person.slug ~ '/') }}">{{ person.name }}</a></h2>
         <p class="who__role">{{ person.role }} <span>·</span> {{ person.place }}</p>
         <p class="who__blurb">{{ person.intro }}</p>
 

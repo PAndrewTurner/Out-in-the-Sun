@@ -5,7 +5,9 @@ from __future__ import annotations
 from playwright.sync_api import sync_playwright
 
 BASE = "http://localhost:8000"
-PAGES = ("/", "/couples/", "/narrators/")
+PAGES = ("/", "/couples/", "/narrators/",
+         "/narrators/connor/", "/narrators/tyler/", "/narrators/noah/",
+         "/narrators/diego/", "/narrators/rami/", "/narrators/caleb/")
 
 NAVY, NAVY9, MUTE = "#1B2A4A", "#101B32", "#5A6B8C"
 SUN, WHITE, WARM = "#FFC49B", "#FFFFFF", "#F2E4D8"
@@ -138,6 +140,28 @@ def main() -> int:
             types.count("image/avif") == 3 and types.count("image/webp") == 3,
             f"couple images negotiate format through <picture> ({len(types)} sources)",
         )
+
+        print("\nBio pages")
+        page.goto(f"{BASE}/narrators/", wait_until="networkidle")
+        links = page.evaluate(
+            "() => Array.from(document.querySelectorAll('.who__name a')).map(a => a.getAttribute('href'))"
+        )
+        audit.check(len(links) == 6, f"every narrator name links to his page ({len(links)})")
+
+        broken = []
+        for path in PAGES[3:]:
+            page.goto(f"{BASE}{path}", wait_until="networkidle")
+            hrefs = page.evaluate("() => Array.from(document.querySelectorAll('a[href]')).map(a => a.href)")
+            for href in hrefs:
+                if href.startswith(BASE) and "#" not in href:
+                    if page.request.get(href).status >= 400:
+                        broken.append(href)
+        audit.check(not broken, f"no broken links on the bio pages ({broken or 'none'})")
+
+        note = page.evaluate("""() => { const n = document.querySelector('.carries__note');
+          return n ? { before: !!n.compareDocumentPosition(document.querySelector('.carries__body')) , text: n.innerText } : null; }""")
+        audit.check(note is not None and "content notes" in note["text"],
+                    "the visible wound is preceded by a content note")
 
         print("\nSharing")
         card = page.evaluate("""() => {

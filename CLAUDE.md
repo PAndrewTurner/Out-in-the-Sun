@@ -58,6 +58,7 @@ These apply to headlines, blurbs, character cards, alt text, meta descriptions, 
 | The story | Premise and setting, spoiler-free | 0 |
 | The couples | One section per couple: who they are together and the obstacle between them | 0 |
 | The narrators | Six profiles: look, life, voice, what they carry | 0 visible, 1 behind a reveal |
+| A page per narrator | `/narrators/<name>/`. His blurb, then what he does, where he is from, how he is connected, how he sounds, and what he carries | 0, plus Tier 1 shown openly under a content note |
 | How it's told | The six-voice rotation across all chapters, and one "same moment, two narrators" pairing | 0 |
 | Their Orlando | The real places in the book, as an illustrated map | 0 |
 | Gallery (optional) | Only worth building once there are more images than the six portraits and three couple scenes, which already appear on their own pages | 0 |
@@ -366,7 +367,7 @@ uv run scripts/audit.py                   # contrast, sizing, layout, behavior
 2. ~~The Tyler conflict in Section 4.~~ Resolved 2026-09-15: synopsis wins, see Section 4.
 3. Domain name and hosting target.
 4. Email sign-up provider.
-5. Whether to publish any Tier 1 material, and in what form. (Currently: yes, behind the labeled reveal on the narrators page.)
+5. Whether to publish any Tier 1 material, and in what form. Currently yes, twice: behind the labeled reveal on the narrators page, and openly on each narrator's own page, where a content note precedes it instead of the toggle acting as the consent step (Andrew's call, 2026-09-16).
 6. Which excerpts, if any.
 7. ~~AI-illustration credit wording.~~ A one-line credit sits in the footer; reword or remove it in `templates/base.html`.
 8. Whether to request higher-resolution portraits for larger display. The 2026-09-15 art is 250px, which caps the narrators page at a 221px disc. 600px exports would allow noticeably larger.

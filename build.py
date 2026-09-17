@@ -6,6 +6,7 @@ The manuscript is not read here, or anywhere else in this repository.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import shutil
@@ -62,8 +63,21 @@ def main() -> int:
         couple["people"] = [by_slug[slug] for slug in couple["narrators"]]
 
     # Home introduces the six in the order the couples are introduced, so the
-    # faces read left to right as three pairs.
+    # faces read left to right as three pairs. The bio pages use the same order,
+    # which is what "before him" and "after him" walk through.
     ordered = [person for couple in couples for person in couple["people"]]
+
+    for couple in couples:
+        for person in couple["people"]:
+            person["couple"] = couple["slug"]
+            person["couple_name"] = couple["name"]
+            person["couple_billing"] = couple["billing"]
+            person["couple_summary"] = couple["summary"]
+            person["couple_tint"] = couple["tint"]
+
+    for index, person in enumerate(ordered):
+        person["prev"] = ordered[index - 1]
+        person["next"] = ordered[(index + 1) % len(ordered)]
 
     env = Environment(
         loader=FileSystemLoader(ROOT / "templates"),
@@ -72,7 +86,20 @@ def main() -> int:
         trim_blocks=True,
         lstrip_blocks=True,
     )
-    env.globals["url"] = lambda path="": f"{base}/{str(path).lstrip('/')}"
+    def url(path: str = "") -> str:
+        return f"{base}/{str(path).lstrip('/')}"
+
+    def asset(path: str) -> str:
+        """A URL that changes whenever the file does.
+
+        Without this, a returning visitor can be handed new HTML and a cached
+        stylesheet from the previous deploy.
+        """
+        digest = hashlib.md5((ROOT / path).read_bytes()).hexdigest()[:8]
+        return f"{url(path)}?v={digest}"
+
+    env.globals["url"] = url
+    env.globals["asset"] = asset
 
     shared = {
         # The narrowest painted disc across the six. Every portrait is scaled so
@@ -90,8 +117,16 @@ def main() -> int:
         ("couples.html", "couples/", "couples/index.html"),
         ("narrators.html", "narrators/", "narrators/index.html"),
     ]
+    pages += [
+        ("narrator.html", f"narrators/{p['slug']}/", f"narrators/{p['slug']}/index.html")
+        for p in ordered
+    ]
+
     for template_name, href, output in pages:
-        html = env.get_template(f"pages/{template_name}").render(page_href=href, **shared)
+        person = next((p for p in ordered if href == f"narrators/{p['slug']}/"), None)
+        html = env.get_template(f"pages/{template_name}").render(
+            page_href=href, person=person, **shared
+        )
         target = DIST / output
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")

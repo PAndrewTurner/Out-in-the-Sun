@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}{{ person.name }} · {{ site.title }}{% endblock %}
+{% block description %}{{ person.name }}, one of the six narrators of Out in the Sun: {{ person.role|lower }} in {{ person.place }}.{% endblock %}
+
+{% block body_class %}page-bio{% endblock %}
+
+{% block content %}
+{% set sizes = "(min-width: 54em) 15.5rem, 45vw" %}
+
+<article class="bio">
+  <header class="bio__head">
+    <div class="wrap bio__head-in">
+      <div class="bio__portrait">{% include "partials/portrait.html" %}</div>
+      <div>
+        <p class="bio__eyebrow">
+          <a href="{{ url('narrators/') }}">The narrators</a>
+        </p>
+        <h1 class="bio__name">{{ person.name }}</h1>
+        <p class="bio__role">{{ person.role }} <span>·</span> {{ person.place }}</p>
+        <p class="bio__blurb">{{ person.intro }}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap bio__facts">
+    <h2 class="visually-hidden">Who he is</h2>
+    <dl>
+      {% for fact in person.canon %}
+      <div class="fact">
+        <dt>{{ fact.label }}</dt>
+        <dd>{{ fact.text }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+
+  <section class="carries" style="--tone: {{ person.color }}" aria-labelledby="carries">
+    <div class="wrap">
+      <p class="carries__note">
+        What follows is the wound he carries through the book. It is described plainly
+        and without detail. <a href="{{ url('narrators/') }}#content-notes">See the content notes</a>.
+      </p>
+      <h2 class="carries__heading" id="carries">{{ person.carries_label }}</h2>
+      <p class="carries__body">{{ person.carries }}</p>
+    </div>
+  </section>
+
+  <div class="wrap bio__with">
+    <p class="tag" style="--tone: {{ person.couple_tint }}">{{ person.couple_billing }}</p>
+    <h2 class="bio__with-name">
+      <a href="{{ url('couples/') }}#{{ person.couple }}">{{ person.couple_name }}</a>
+    </h2>
+    <p class="bio__with-body">{{ person.couple_summary }}</p>
+  </div>
+
+  <nav class="bio__nav wrap" aria-label="Other narrators">
+    <a class="bio__prev" href="{{ url('narrators/' ~ person.prev.slug ~ '/') }}">
+      <span>Before him</span> {{ person.prev.name }}
+    </a>
+    <a class="bio__next" href="{{ url('narrators/' ~ person.next.slug ~ '/') }}">
+      <span>After him</span> {{ person.next.name }}
+    </a>
+  </nav>
+</article>
+
+{% endblock %}
